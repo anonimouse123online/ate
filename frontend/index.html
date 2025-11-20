@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO Meta Tags -->
+    <title>HHR Cleaning Solutions | Professional Cleaning Services in Australia</title>
+    <meta name="description" content="HHR Cleaning Solutions - Trusted professional cleaning services across Australia. Residential, commercial, end of lease, carpet, and window cleaning services.">
+    <meta name="keywords" content="cleaning services, professional cleaners, Australia, residential cleaning, commercial cleaning, end of lease cleaning, carpet cleaning, window cleaning">
+    <meta name="author" content="HHR Cleaning Solutions">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="HHR Cleaning Solutions | Professional Cleaning Services">
+    <meta property="og:description" content="Trusted professional cleaning services across Australia. Quality guaranteed, eco-friendly products, fully insured.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hhrcleaningsolutions.com.au">
+    
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="HHR Cleaning Solutions">
+    <meta name="twitter:description" content="Professional cleaning services across Australia">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "HHR Cleaning Solutions",
+      "description": "Professional cleaning services across Australia",
+      "url": "https://hhrcleaningsolutions.com.au",
+      "telephone": "+61-1300-CLEAN-HHR",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "Australia"
+      },
+      "areaServed": "Australia",
+      "serviceType": "Cleaning services",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Cleaning Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Residential Cleaning"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Commercial Cleaning"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "End of Lease Cleaning"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Carpet Cleaning"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Window Cleaning"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+    
+    <style>
+      /* Critical CSS for initial load */
+      body {
+        margin: 0;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        background: #ffffff;
+      }
+      
+      #root {
+        min-height: 100vh;
+      }
+      
+      /* Loading state */
+      .app-loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: linear-gradient(135deg, #2563eb, #1d4ed8);
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <!-- Loading fallback -->
+      <div class="app-loading">
+        <div style="text-align: center;">
+          <div style="font-size: 2rem; margin-bottom: 1rem;">✨</div>
+          <h2 style="margin: 0; font-weight: 600;">HHR Cleaning Solutions</h2>
+          <p style="margin: 0.5rem 0 0 0; opacity: 0.8;">Loading...</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Performance & Analytics Scripts -->
+    <script>
+      // Performance monitoring
+      window.addEventListener('load', function() {
+        // Remove loading state
+        const loadingElement = document.querySelector('.app-loading');
+        if (loadingElement) {
+          loadingElement.style.display = 'none';
+        }
+        
+        // Log performance metrics
+        if ('performance' in window) {
+          const perfData = window.performance.timing;
+          const loadTime = perfData.loadEventEnd - perfData.navigationStart;
+          console.log('Page load time:', loadTime + 'ms');
+        }
+      });
+      
+      // Error tracking
+      window.addEventListener('error', function(e) {
+        console.error('Application error:', e.error);
+      });
+    </script>
+    
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
