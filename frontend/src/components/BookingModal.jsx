@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
 import './BookingModal.css';
 
 const BookingModal = ({ isOpen, onClose }) => {
+  const formRef = useRef();
   const [formData, setFormData] = useState({
     service: '',
     name: '',
@@ -12,6 +14,8 @@ const BookingModal = ({ isOpen, onClose }) => {
     time: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(''); // 'success', 'error'
 
   const services = [
     'Residential Cleaning',
@@ -29,21 +33,46 @@ const BookingModal = ({ isOpen, onClose }) => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
-    console.log('Booking submitted:', formData);
-    alert('Thank you for your booking request. We will contact you within 30 minutes to confirm details.');
-    onClose();
-    setFormData({
-      service: '',
-      name: '',
-      email: '',
-      phone: '',
-      address: '',
-      date: '',
-      time: '',
-      message: ''
-    });
+    setIsSubmitting(true);
+    setSubmitStatus('');
+
+    try {
+      await emailjs.sendForm(
+        'service_z08e5dn', // Your EmailJS service ID
+        'template_nc6q9vb', // Your EmailJS template ID
+        formRef.current,
+        'zcrVLqTwIKDds8jE4' // Your EmailJS public key
+      );
+
+      setSubmitStatus('success');
+      console.log('Booking submitted:', formData);
+      
+      // Reset form
+      setFormData({
+        service: '',
+        name: '',
+        email: '',
+        phone: '',
+        address: '',
+        date: '',
+        time: '',
+        message: ''
+      });
+
+      // Close modal after success
+      setTimeout(() => {
+        onClose();
+        setSubmitStatus('');
+      }, 3000);
+
+    } catch (error) {
+      console.error('Failed to send email:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (!isOpen) return null;
@@ -58,7 +87,7 @@ const BookingModal = ({ isOpen, onClose }) => {
           <p>Complete the form below and we'll contact you promptly</p>
         </div>
 
-        <form className="booking-form" onSubmit={handleSubmit}>
+        <form ref={formRef} className="booking-form" onSubmit={sendEmail}>
           <div className="form-group">
             <label>Service Type *</label>
             <select 
@@ -151,9 +180,26 @@ const BookingModal = ({ isOpen, onClose }) => {
             ></textarea>
           </div>
 
-          <button type="submit" className="btn btn-primary btn-block">
-            Request Quote
+          <button 
+            type="submit" 
+            className="btn btn-primary btn-block"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? 'Sending...' : 'Request Quote'}
           </button>
+
+          {/* Status Messages */}
+          {submitStatus === 'success' && (
+            <div className="status-message success">
+              ✅ Thank you! Your booking request has been sent. We'll contact you within 30 minutes.
+            </div>
+          )}
+          
+          {submitStatus === 'error' && (
+            <div className="status-message error">
+              ❌ Failed to send booking request. Please try again or call us directly.
+            </div>
+          )}
 
           <p className="form-note">
             We will contact you within 30 minutes to discuss pricing and schedule confirmation
