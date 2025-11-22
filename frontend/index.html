@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/hhr-logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- SEO Meta Tags -->
@@ -27,7 +27,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -106,8 +106,59 @@
         justify-content: center;
         align-items: center;
         height: 100vh;
-        background: linear-gradient(135deg, #2563eb, #1d4ed8);
+        background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
         color: white;
+      }
+
+      /* HHR Logo Styles */
+      .hhr-logo {
+        font-size: 3.5rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1.5rem;
+        letter-spacing: -0.025em;
+        text-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+      }
+
+      .loading-subtitle {
+        font-size: 1.25rem;
+        font-weight: 500;
+        opacity: 0.9;
+        margin: 0;
+      }
+
+      .loading-container {
+        text-align: center;
+        animation: fadeInUp 0.8s ease-out;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Loading spinner */
+      .loading-spinner {
+        width: 40px;
+        height: 40px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: #ffffff;
+        animation: spin 1s ease-in-out infinite;
+        margin: 2rem auto 0;
+      }
+
+      @keyframes spin {
+        to { transform: rotate(360deg); }
       }
     </style>
   </head>
@@ -115,10 +166,11 @@
     <div id="root">
       <!-- Loading fallback -->
       <div class="app-loading">
-        <div style="text-align: center;">
-          <div style="font-size: 2rem; margin-bottom: 1rem;">✨</div>
-          <h2 style="margin: 0; font-weight: 600;">HHR Cleaning Solutions</h2>
-          <p style="margin: 0.5rem 0 0 0; opacity: 0.8;">Loading...</p>
+        <div class="loading-container">
+          <div class="hhr-logo">HHR</div>
+          <h2 style="margin: 0 0 0.5rem 0; font-weight: 600; font-size: 1.5rem;">Cleaning Solutions</h2>
+          <p class="loading-subtitle">Professional Cleaning Services</p>
+          <div class="loading-spinner"></div>
         </div>
       </div>
     </div>
@@ -145,6 +197,14 @@
       window.addEventListener('error', function(e) {
         console.error('Application error:', e.error);
       });
+
+      // Optional: Add a timeout to hide loading screen if app takes too long
+      setTimeout(() => {
+        const loadingElement = document.querySelector('.app-loading');
+        if (loadingElement && loadingElement.style.display !== 'none') {
+          loadingElement.style.display = 'none';
+        }
+      }, 5000);
     </script>
     
     <script type="module" src="/src/main.jsx"></script>
