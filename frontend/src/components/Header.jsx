@@ -26,7 +26,6 @@ const Header = ({ onBookNow }) => {
       <div className="container">
         <div className="header-content">
           <div className="logo">
-            <div className="logo-icon">✨</div>
             <div className="logo-text">
               <h1>HHR Cleaning</h1>
               <span>Professional Solutions</span>

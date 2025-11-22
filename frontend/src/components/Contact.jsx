@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import './Contact.css';
 
 const Contact = () => {
@@ -9,6 +10,8 @@ const Contact = () => {
     service: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const formRef = useRef();
 
   const handleChange = (e) => {
     setFormData({
@@ -17,17 +20,33 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Contact form submitted:', formData);
-    alert('Thank you for your inquiry. We will contact you within 24 hours.');
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      service: '',
-      message: ''
-    });
+    setIsSubmitting(true);
+
+    try {
+      await emailjs.sendForm(
+        'service_z08e5dn',
+        'template_3x6e0di',
+        formRef.current,
+        'zcrVLqTwIKDds8jE4'
+      );
+      
+      alert('Thank you for your inquiry. We will contact you within 24 hours.');
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        service: '',
+        message: ''
+      });
+      
+    } catch (error) {
+      console.error('Error sending email:', error);
+      alert('Failed to send inquiry. Please try again or contact us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -71,8 +90,16 @@ const Contact = () => {
           </div>
 
           <div className="contact-form-container">
-            <h3>Request a Quote</h3>
-            <form className="contact-form" onSubmit={handleSubmit}>
+            <h3>Contact Us</h3>
+            <form 
+              ref={formRef}
+              className="contact-form" 
+              onSubmit={handleSubmit}
+            >
+              {/* Hidden fields for EmailJS */}
+              <input type="hidden" name="_subject" value="New Contact Form Inquiry - HHR Cleaning" />
+              <input type="hidden" name="_captcha" value="false" />
+              
               <div className="form-group">
                 <input
                   type="text"
@@ -133,8 +160,12 @@ const Contact = () => {
                 ></textarea>
               </div>
 
-              <button type="submit" className="btn btn-primary btn-block">
-                Submit Inquiry
+              <button 
+                type="submit" 
+                className="btn btn-primary btn-block"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'Sending...' : 'Submit Inquiry'}
               </button>
             </form>
           </div>

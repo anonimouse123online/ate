@@ -1,11 +1,19 @@
 import React from 'react';
 import './Services.css';
 
+// Import images with correct filenames
+import residentialImage from '../assets/cleaningg.jpg';
+import commercialImage from '../assets/commercial.jpg';
+import endOfLeaseImage from '../assets/end.jpeg';
+import carpetImage from '../assets/carpet.jpg';
+import windowImage from '../assets/window.jpeg';
+import constructionImage from '../assets/constuction.jpg'; // Changed from con.jpg
+
 const Services = ({ onBookNow }) => {
   const services = [
     {
       id: 1,
-      icon: "🏠",
+      image: residentialImage,
       title: "Residential Cleaning",
       description: "Comprehensive home cleaning services using eco-friendly products and advanced equipment for a healthier living environment.",
       features: ["Deep cleaning", "Eco-friendly products", "Flexible scheduling", "Quality guarantee"],
@@ -13,7 +21,7 @@ const Services = ({ onBookNow }) => {
     },
     {
       id: 2,
-      icon: "🏢",
+      image: commercialImage,
       title: "Commercial Cleaning",
       description: "Professional cleaning solutions for offices, retail spaces, and commercial establishments.",
       features: ["Office cleaning", "Common areas", "Restroom sanitization", "Custom schedules"],
@@ -21,7 +29,7 @@ const Services = ({ onBookNow }) => {
     },
     {
       id: 3,
-      icon: "🔑",
+      image: endOfLeaseImage,
       title: "End of Lease Cleaning",
       description: "Guaranteed bond-back cleaning service to ensure full deposit return.",
       features: ["Bond guarantee", "Professional equipment", "Thorough inspection", "Quick turnaround"],
@@ -29,7 +37,7 @@ const Services = ({ onBookNow }) => {
     },
     {
       id: 4,
-      icon: "🧹",
+      image: carpetImage,
       title: "Carpet Cleaning",
       description: "Advanced steam cleaning technology for all carpet types and rug varieties.",
       features: ["Steam cleaning", "Stain removal", "Odor elimination", "Quick drying"],
@@ -37,7 +45,7 @@ const Services = ({ onBookNow }) => {
     },
     {
       id: 5,
-      icon: "🪟",
+      image: windowImage,
       title: "Window Cleaning",
       description: "Crystal clear window cleaning for residential and commercial properties.",
       features: ["Interior & exterior", "Streak-free finish", "Safety equipment", "Regular maintenance"],
@@ -45,7 +53,7 @@ const Services = ({ onBookNow }) => {
     },
     {
       id: 6,
-      icon: "🏗️",
+      image: constructionImage,
       title: "Construction Cleaning",
       description: "Post-construction cleanup services to prepare spaces for occupancy.",
       features: ["Debris removal", "Final cleaning", "Waste disposal", "Move-in ready"],
@@ -65,7 +73,13 @@ const Services = ({ onBookNow }) => {
           {services.map((service) => (
             <div key={service.id} className="service-card">
               <div className="service-header">
-                <div className="service-icon">{service.icon}</div>
+                <div className="service-image">
+                  <img 
+                    src={service.image} 
+                    alt={service.title}
+                    loading="lazy"
+                  />
+                </div>
               </div>
               
               <h3>{service.title}</h3>

@@ -15,7 +15,6 @@ const Footer = () => {
         <div className="footer-content">
           <div className="footer-section">
             <div className="footer-logo">
-              <div className="logo-icon">✨</div>
               <div className="logo-text">
                 <h3>HHR Cleaning</h3>
                 <span>Professional Solutions</span>

@@ -4,34 +4,34 @@ import './WhyChooseUs.css';
 const WhyChooseUs = () => {
   const features = [
     {
-      icon: "🏆",
-      title: "Award-Winning Service",
-      description: "Recognized as Australia's premier cleaning service with multiple industry awards"
+      icon: "✅",
+      title: "Quality Guaranteed",
+      description: "100% satisfaction guarantee with free re-cleaning if you're not completely satisfied with our service"
     },
     {
       icon: "🌿",
-      title: "Eco-Conscious Approach",
-      description: "Certified green cleaning products that are safe for families, pets, and the environment"
+      title: "Eco-Friendly Solutions",
+      description: "Environmentally conscious cleaning products that are effective yet safe for your family and pets"
     },
     {
       icon: "⏰",
       title: "Flexible Scheduling",
-      description: "24/7 availability with same-day service options to accommodate your busy schedule"
+      description: "Available 7 days a week with same-day service options to fit your busy lifestyle"
     },
     {
       icon: "💰",
-      title: "Competitive Pricing",
-      description: "Transparent pricing with a best-price guarantee and no hidden fees"
+      title: "Transparent Pricing",
+      description: "No hidden fees with upfront quotes and competitive rates for all our cleaning services"
     },
     {
-      icon: "🛡️",
-      title: "Fully Insured",
-      description: "$2 million public liability insurance providing complete peace of mind"
+      icon: "👨‍💼",
+      title: "Trained Professionals",
+      description: "Our cleaning staff undergoes thorough background checks and continuous training"
     },
     {
       icon: "⭐",
-      title: "5-Star Excellence",
-      description: "Consistently rated 4.9/5 stars across 2,000+ verified customer reviews"
+      title: "Proven Track Record",
+      description: "Trusted by thousands of satisfied customers with consistent 5-star service reviews"
     }
   ];
 
@@ -40,7 +40,7 @@ const WhyChooseUs = () => {
       <div className="container">
         <div className="section-header">
           <h2>Why Choose HHR Cleaning Solutions?</h2>
-          <p>Discover the distinctive qualities that establish our industry leadership</p>
+          <p>Experience the difference with our customer-focused approach and professional standards</p>
         </div>
 
         <div className="features-grid">
